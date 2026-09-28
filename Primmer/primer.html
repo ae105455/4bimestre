@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
-    //Type Script mejorada 
-    descargamos node.js
-     Get-ExecutionPolicy
-     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-     npm install -g typescript
-     to  change run: npm inatall  -g npm@12.1.0
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de TypeScript | 4to Bimestre</title>
 </head>
 <body>
+    <main>
+        <h1>Configuración de TypeScript</h1>
+        <p>Instala Node.js y abre una terminal nueva. Comprueba que Node.js y npm estén disponibles:</p>
+        <pre><code>node -v
+npm -v</code></pre>
+        <p>Instala TypeScript y verifica la versión:</p>
+        <pre><code>npm install -g typescript
+tsc -v</code></pre>
+        <p>Si PowerShell bloquea la ejecución de scripts, puedes permitirlos para tu usuario:</p>
+        <pre><code>Get-ExecutionPolicy
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>
+    </main>
     <script>
         let a = 5;
         let b = '5' ; // cadena  y el otro  es numerico 
