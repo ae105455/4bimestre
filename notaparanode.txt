@@ -1,0 +1,454 @@
+Get-ExecutionPolicy
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+Get-ExecutionPolicy -Scope CurrentUser
+RemoteSigned
+npm install -g typescript
+-------------------------------------
+========================================================
+CONFIGURACIÓN DE TYPESCRIPT - 4to BIMESTRE
+========================================================
+
+CARPETA DEL PROYECTO:
+C:\Users\ISEC-PC27\Desktop\4bimestre
+
+
+1. COMPROBAR NODE.JS
+--------------------------------------------------------
+
+Comando:
+
+node -v
+
+En mi caso funcionó mostrando:
+
+v24.21.0
+
+Esto significa que Node.js está instalado y funciona.
+
+
+2. COMPROBAR NPM
+--------------------------------------------------------
+
+Comando:
+
+npm -v
+
+En mi caso funcionó mostrando:
+
+11.19.0
+
+Esto significa que npm está instalado y funciona.
+
+
+3. SI NODE NO ES RECONOCIDO
+--------------------------------------------------------
+
+En nuestro caso Node.js estaba instalado, pero PowerShell
+no encontraba el comando.
+
+Comprobamos que existía:
+
+Test-Path "C:\Program Files\nodejs\node.exe"
+
+Resultado:
+
+True
+
+Entonces comprobamos directamente Node:
+
+& "C:\Program Files\nodejs\node.exe" -v
+
+Resultado:
+
+v24.21.0
+
+Y npm:
+
+& "C:\Program Files\nodejs\npm.cmd" -v
+
+Resultado:
+
+11.19.0
+
+
+4. ARREGLAR EL PATH DE NODE.JS
+--------------------------------------------------------
+
+Agregamos Node.js al PATH de la terminal:
+
+$env:Path += ";C:\Program Files\nodejs"
+
+Después comprobamos:
+
+node -v
+
+npm -v
+
+Funcionaron correctamente.
+
+
+5. INSTALAR TYPESCRIPT
+--------------------------------------------------------
+
+Comando:
+
+npm install -g typescript
+
+Resultado:
+
+changed 2 packages in 3s
+
+Esto significa que TypeScript se instaló correctamente.
+
+
+6. COMPROBAR TYPESCRIPT
+--------------------------------------------------------
+
+Primero averiguamos dónde instala npm los programas:
+
+npm config get prefix
+
+Resultado:
+
+C:\Users\ISEC-PC27\AppData\Roaming\npm
+
+Agregamos esa carpeta al PATH:
+
+$env:Path += ";C:\Users\ISEC-PC27\AppData\Roaming\npm"
+
+Después:
+
+tsc -v
+
+Resultado:
+
+Version 7.0.2
+
+Esto significa que TypeScript funciona correctamente.
+
+
+7. CREAR CONFIGURACIÓN DE TYPESCRIPT
+--------------------------------------------------------
+
+Comando:
+
+tsc --init
+
+Esto crea:
+
+tsconfig.json
+
+IMPORTANTE:
+
+Si aparece:
+
+error TS5054: A 'tsconfig.json' file is already defined...
+
+NO es un problema.
+
+Significa que el archivo tsconfig.json ya existe.
+
+
+8. NO ESCRIBIR LOS NOMBRES DE ARCHIVOS COMO COMANDOS
+--------------------------------------------------------
+
+NO escribir:
+
+tsconfig.json
+
+NO escribir:
+
+scriptdd.ts
+
+NO escribir:
+
+scriptdd.js
+
+Son archivos, no comandos de PowerShell.
+
+Para ver los archivos usamos:
+
+dir
+
+
+9. CREAR EL ARCHIVO TYPESCRIPT
+--------------------------------------------------------
+
+Creamos:
+
+scriptdd.ts
+
+Ejemplo de código:
+
+let nombre: string = "Juan";
+
+console.log("Hola " + nombre);
+
+
+10. COMPROBAR QUE EXISTE EL ARCHIVO
+--------------------------------------------------------
+
+Comando:
+
+dir scriptdd.ts
+
+Si aparece:
+
+scriptdd.ts
+
+significa que el archivo existe.
+
+
+11. COMPILAR TYPESCRIPT
+--------------------------------------------------------
+
+Como ya existe tsconfig.json, usamos:
+
+tsc
+
+NO usamos:
+
+tsc scriptdd.ts
+
+porque TypeScript 7 indicó que existe tsconfig.json.
+
+El comando:
+
+tsc
+
+lee la configuración de tsconfig.json y compila
+los archivos TypeScript.
+
+
+12. ARCHIVOS GENERADOS
+--------------------------------------------------------
+
+Después de ejecutar:
+
+tsc
+
+se generaron:
+
+scriptdd.js
+scriptdd.d.ts
+scriptdd.js.map
+scriptdd.d.ts.map
+
+El archivo principal que ejecutamos es:
+
+scriptdd.js
+
+
+13. EJECUTAR EL JAVASCRIPT
+--------------------------------------------------------
+
+Comando:
+
+node scriptdd.js
+
+Resultado:
+
+Hola Juan
+
+Esto confirma que:
+
+TypeScript
+    ↓
+scriptdd.ts
+    ↓
+tsc
+    ↓
+scriptdd.js
+    ↓
+Node.js
+    ↓
+Hola Juan
+
+TODO FUNCIONA.
+
+
+========================================================
+GIT / GITHUB
+========================================================
+
+IMPORTANTE:
+
+Guardar el archivo con Ctrl + S NO significa que ya está
+guardado en GitHub.
+
+Hay 3 pasos diferentes:
+
+1. Guardar el archivo en VS Code
+2. Hacer COMMIT en Git
+3. Hacer PUSH hacia GitHub
+
+
+14. GUARDAR LOS CAMBIOS
+--------------------------------------------------------
+
+En VS Code:
+
+Ctrl + S
+
+Esto guarda el archivo en la computadora.
+
+
+15. COMPROBAR GIT
+--------------------------------------------------------
+
+En PowerShell:
+
+git status
+
+Este comando muestra qué archivos cambiaron.
+
+
+16. AGREGAR LOS CAMBIOS
+--------------------------------------------------------
+
+Para agregar todos los archivos:
+
+git add .
+
+Después:
+
+git status
+
+Los archivos deberían aparecer preparados para commit.
+
+
+17. HACER COMMIT
+--------------------------------------------------------
+
+Comando:
+
+git commit -m "Configuracion de TypeScript"
+
+El COMMIT guarda una versión de los cambios en el
+historial local de Git.
+
+
+18. SUBIR LOS CAMBIOS A GITHUB
+--------------------------------------------------------
+
+Comando:
+
+git push
+
+Esto envía el commit desde la computadora hacia GitHub.
+
+
+========================================================
+¿CÓMO SÉ QUE YA ESTÁ GUARDADO EN GITHUB?
+========================================================
+
+Después de ejecutar:
+
+git push
+
+deberías ver un mensaje parecido a:
+
+Everything up-to-date
+
+o algo parecido a:
+
+[new branch] main -> main
+
+o:
+
+main -> main
+
+Eso significa que GitHub recibió los cambios.
+
+
+19. COMPROBAR QUE NO QUEDAN CAMBIOS
+--------------------------------------------------------
+
+Ejecuta:
+
+git status
+
+Si aparece:
+
+nothing to commit, working tree clean
+
+significa que no tienes cambios pendientes en tu
+computadora para guardar en Git.
+
+
+20. COMPROBACIÓN FINAL
+--------------------------------------------------------
+
+Para actualizar y subir cambios:
+
+Ctrl + S
+
+git status
+
+git add .
+
+git commit -m "Actualizacion de TypeScript"
+
+git push
+
+Después:
+
+git status
+
+Debe decir:
+
+nothing to commit, working tree clean
+
+
+========================================================
+RESUMEN PARA RECORDAR
+========================================================
+
+NODE:
+
+node -v
+
+NPM:
+
+npm -v
+
+TYPESCRIPT:
+
+tsc -v
+
+COMPILAR:
+
+tsc
+
+EJECUTAR:
+
+node scriptdd.js
+
+
+GIT:
+
+git status
+git add .
+git commit -m "mensaje"
+git push
+
+
+ORDEN COMPLETO PARA CADA ACTUALIZACIÓN:
+
+1. Modificar el archivo .ts
+2. Ctrl + S
+3. tsc
+4. node scriptdd.js
+5. git status
+6. git add .
+7. git commit -m "Descripcion del cambio"
+8. git push
+9. git status
+
+RESULTADO FINAL:
+
+nothing to commit, working tree clean
+
+Y después de git push, los cambios deben aparecer
+en el repositorio de GitHub.
+========================================================
