@@ -59,5 +59,79 @@ const booleans: boolean[]=[true, false, true];
 //emum tipos de numeros 
 enum DiasSemana {Domingo,Lunes,Martes,Miercoles,Jueves,VIenes,Sabado}
 enum colores {Rojo="#f00",Verde="#0f0", azul="#00f"}
+//funciones  
+function suma (a:number,b: any): number {
+    return a + b;
+}
+console.log(suma(5,'a')); // cuando es  un trabajo grande  que tipo de  dato estoy haciendo  
 
+console.log(suma(5,9));
+//funciones  flecha
 
+const dividir  =(a:number, b: number) => a / b; //si son varias centencias 
+console.log(dividir(5,9));
+//funcion con parametros opcionales 
+function saludo(nombre: string, edad: number=20): string {
+ return `Mi nombre es   ${nombre}, y tengo ${edad} años`;
+}
+
+console.log (saludo('juan',15));
+/* let a : number | string ;
+a= 5;
+a= true; //error ya que no est permitido boolean
+a= 'Carlos'; */
+//class
+class Empleado{
+    nombre: String;
+    constructor(nombre: String){
+        this.nombre=nombre ;
+    
+    }
+    saludar(){
+        console.log('Hola , mi nombre es${this.nombre}');
+
+    }
+}
+const nuevoEmpleado = new Empleado('Elsa Capunta');
+ console.log(nuevoEmpleado.saludar());
+
+ //INTERFACES 
+ // NO TIENEN CODIGOS 
+ //USAMOS  IMPLEMENTS
+  interface Persona {
+    nombre: String;
+    edad: number;
+  }
+// INTERFACES CON PROPIEDADES OPCIONALES (?)
+  interface Producto {
+    nombre: String;
+    precio: number;
+descripcion : String ;
+  }
+  //INTERFACE PARA FUNCIONES 
+  interface Comprador {
+    (a: number, nombre: String) : boolean;
+  }
+  //INTERFACE PARA CLASES
+  interface Vehiculo {
+    marca:String ;
+    velocidadActual:  number;
+    acelerar(incremento: number) :void;
+
+  }
+  class Auto implements Vehiculo{
+    marca: String;
+    velocidadActual : number;
+    constructor(marca:string){
+     this.marca=marca;
+     this.velocidadActual = 0;
+        } 
+    acelerar(incremento: number): void {
+        this.velocidadActual += incremento;
+        console.log(`El auto ${this.marca} va a  ${this.velocidadActual} km/h`);
+    }
+  }
+
+  const  miAuto =new Auto('Suzuri');
+  miAuto.acelerar(80);
+  

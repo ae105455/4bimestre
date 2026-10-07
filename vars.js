@@ -70,5 +70,49 @@ var colores;
     colores["Verde"] = "#0f0";
     colores["azul"] = "#00f";
 })(colores || (colores = {}));
+//funciones  
+function suma(a, b) {
+    return a + b;
+}
+console.log(suma(5, 'a')); // cuando es  un trabajo grande  que tipo de  dato estoy haciendo  
+console.log(suma(5, 9));
+//funciones  flecha
+const dividir = (a, b) => a / b; //si son varias centencias 
+console.log(dividir(5, 9));
+//funcion con parametros opcionales 
+function saludo(nombre, edad = 20) {
+    return `Mi nombre es   ${nombre}, y tengo ${edad} años`;
+}
+console.log(saludo('juan', 15));
+/* let a : number | string ;
+a= 5;
+a= true; //error ya que no est permitido boolean
+a= 'Carlos'; */
+//class
+class Empleado {
+    nombre;
+    constructor(nombre) {
+        this.nombre = nombre;
+    }
+    saludar() {
+        console.log('Hola , mi nombre es${this.nombre}');
+    }
+}
+const nuevoEmpleado = new Empleado('Elsa Capunta');
+console.log(nuevoEmpleado.saludar());
+class Auto {
+    marca;
+    velocidadActual;
+    constructor(marca) {
+        this.marca = marca;
+        this.velocidadActual = 0;
+    }
+    acelerar(incremento) {
+        this.velocidadActual += incremento;
+        console.log(`El auto ${this.marca} va a  ${this.velocidadActual} km/h`);
+    }
+}
+const miAuto = new Auto('Suzuri');
+miAuto.acelerar(80);
 export {};
 //# sourceMappingURL=vars.js.map
