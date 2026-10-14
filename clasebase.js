@@ -1,4 +1,3 @@
-"use strict";
 class Estudiante {
     nombre;
     sexo;
@@ -34,3 +33,5 @@ listaEstudiantes.forEach(estudiante => {
     console.log(estudiante.describir());
     console.log(estudiante.mostrarProfesion());
 });
+export {};
+//# sourceMappingURL=clasebase.js.map
