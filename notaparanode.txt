@@ -290,6 +290,7 @@ En VS Code:
 
 Ctrl + S
 
+
 Esto guarda el archivo en la computadora.
 
 
